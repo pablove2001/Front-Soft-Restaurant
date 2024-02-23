@@ -7,8 +7,6 @@ export const fetchCookOrders = async () => {
   );
   const data: CookOrder[] = await res.json();
 
-  console.log(data);
-
   for (let cookOrder of data) {
     cookOrder.products = [
       { name: "Product 1", quantity: 2 },
@@ -16,8 +14,6 @@ export const fetchCookOrders = async () => {
       { name: "Product 3", quantity: 4 },
     ];
   }
-
-  console.log(data);
 
   return data;
 };
