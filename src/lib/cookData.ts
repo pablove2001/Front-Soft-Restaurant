@@ -13,6 +13,7 @@ export const fetchCookOrders = async () => {
       { name: "Product 2", quantity: 1 },
       { name: "Product 3", quantity: 4 },
     ];
+    cookOrder.status = "pending";
   }
 
   return data;
