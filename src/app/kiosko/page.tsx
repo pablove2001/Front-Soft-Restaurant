@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ProductKiosko from "@/components/ProductKiosko";
 import { fetchKioskoProducts } from "@/lib/kioskoData";
 import { Product } from "@/types/Product";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/KioskoNavbar";
 import Pay from "@/components/Pay";
 
 export default async function Kiosko() {
