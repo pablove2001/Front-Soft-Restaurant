@@ -1,35 +1,72 @@
+'use client'
+import { useState } from 'react';
+
+/*Lista de mesas*/
 function Lista({
     numeroMesa,
     nombreMesa,
-}:{
+    onMesaClick,
+}: {
     numeroMesa: number;
     nombreMesa: string;
-}){
+    onMesaClick: (numeroMesa: number) => void;
+}) {
     return (
-            <div className="h-auto w-auto bg-orange-200 m-3 border-2 drop-shadow-md rounded-lg">
-                <div className="size-8 m-8 text-center w-auto text-xl">
-                    <b>{nombreMesa}:</b> {numeroMesa}
-                </div>
-            </div>
-        );
+        <div
+            className="h-auto w-auto bg-orange-200 m-3 border-2 rounded-lg shadow-md cursor-pointer p-4"
+            onClick={() => onMesaClick(numeroMesa)}
+        >
+            <div className="text-lg font-bold text-center">{nombreMesa}: {numeroMesa}</div>
+        </div>
+    );
 }
 
+/*Modal al presionar una mesa*/
 function ModalWaiter({
-
-}:{
-
-}){
-    return(
-            <div>
+    numeroMesa,
+    onClose,
+}: {
+    numeroMesa: number;
+    onClose: () => void;
+}) {
+    return (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
+            <div className="bg-white p-8 rounded-lg w-1/2">
+                <div className="flex justify-end">
+                    <button className="bg-gray-300 px-3 py-1 rounded" onClick={onClose}>Cerrar</button>
+                </div>
+                <div className="text-center">
+                    <h2 className="text-xl font-bold">Número de mesa: {numeroMesa}</h2>
+                    <p>Elige una opción:</p>
+                </div>
+                <div className="flex justify-center mt-4">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">Añadir producto</button>
+                    <button className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4">Resumen de la mesa {numeroMesa}</button>
+                    <button className="bg-green-500 text-white px-4 py-2 rounded-lg ">Cobrar $$$ </button>
+                </div>
             </div>
+        </div>
     );
 }
 
 export default function Waiter() {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedMesa, setSelectedMesa] = useState<number | null>(null);
+
+    const handleMesaClick = (numeroMesa: number) => {
+        setSelectedMesa(numeroMesa);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setSelectedMesa(null);
+        setModalOpen(false);
+    };
+
     let mesas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return (
         <>
-            {/*Navbar*/}
+            {/* Navbar */}
             <nav className="fixed top-0 bg-amber-500 w-full z-10">
                 <div className="mx-auto px-10 flex items-center justify-between h-16">
                     <div>
@@ -57,15 +94,25 @@ export default function Waiter() {
             </nav>
 
             {/*Body*/}
-            {/*Espacio en blanco*/}
+            {/* Espacio en blanco */}
             <div className="h-16"></div>
 
-            {/*Enlistado de mesas*/}
+            {/* Enlistado de mesas */}
             <div className="grid grid-cols-2">
                 {mesas.map((mesa) => (
-                    <Lista key={mesa} numeroMesa={mesa} nombreMesa="Mesa" />
+                    <Lista
+                        key={mesa}
+                        numeroMesa={mesa}
+                        nombreMesa="Mesa"
+                        onMesaClick={handleMesaClick}
+                    />
                 ))}
             </div>
+
+            {/* Renderizar el modal si está abierto */}
+            {modalOpen && selectedMesa !== null && (
+                <ModalWaiter numeroMesa={selectedMesa} onClose={closeModal} />
+            )}
         </>
     );
 }
