@@ -32,17 +32,35 @@ function ModalWaiter({
     return (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
             <div className="bg-white p-8 rounded-lg w-1/2">
+                {/*Boton cerrar*/}
                 <div className="flex justify-end">
                     <button className="bg-gray-300 px-3 py-1 rounded" onClick={onClose}>Cerrar</button>
                 </div>
+                {/*Body modal*/}
                 <div className="text-center">
                     <h2 className="text-xl font-bold">Número de mesa: {numeroMesa}</h2>
                     <p>Elige una opción:</p>
                 </div>
+                {/*Botones foot*/}
                 <div className="flex justify-center mt-4">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">Añadir producto</button>
-                    <button className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4">Resumen de la mesa {numeroMesa}</button>
-                    <button className="bg-green-500 text-white px-4 py-2 rounded-lg ">Cobrar $$$ </button>
+                    {/*Añadir producto*/}
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">
+                        <a href="/kiosco">
+                            Añadir producto
+                        </a>
+                    </button>
+                    {/*Resumen*/}
+                    <button className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4">
+                        <a href="/waiter/summary">
+                            Resumen de la mesa {numeroMesa}
+                        </a>
+                    </button>
+                    {/*Cobrar*/}
+                    <button className="bg-green-500 text-white px-4 py-2 rounded-lg ">
+                        <a href="/waiter/pay">
+                            Cobrar $$$
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
