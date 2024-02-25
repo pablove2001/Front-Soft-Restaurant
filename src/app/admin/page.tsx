@@ -8,7 +8,7 @@ function AdminCard({ title, imageUrl, link }) {
                 <img className="w-40 h-40 object-cover m-4" src={imageUrl} alt={title} />
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">{title}</div>
-                </div> 
+                </div>
             </div>
         </a>
     );
