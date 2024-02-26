@@ -1,10 +1,8 @@
-// Pay.js
 import React from "react";
 import Icon from "@mdi/react";
-import { mdiCart } from "@mdi/js";
+import { mdiUpload } from "@mdi/js";
 
-const Pay = ({
-  totalAmount,
+const ConfirmOrder = ({
   disabled,
   onClick,
 }: {
@@ -23,11 +21,11 @@ const Pay = ({
         disabled={disabled}
         onClick={onClick}
       >
-        <Icon path={mdiCart} size={1} className="inline-block mr-2" />
-        Pay ${totalAmount.toFixed(2)}
+        <Icon path={mdiUpload} size={1} className="inline-block mr-2" />
+        Save
       </button>
     </div>
   );
 };
 
-export default Pay;
+export default ConfirmOrder;

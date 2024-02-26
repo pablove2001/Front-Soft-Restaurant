@@ -6,9 +6,12 @@ export default function Waiter() {
     <div className="h-screen grid grid-cols-2 gap-5 p-8 max-w-[1100px] mx-auto">
       <div className="flex items-center">
         <div>
-          <div className="text-3xl font-medium border-b-2 border-black pb-3">
-            {"<-"} Regresar
-          </div>
+          <a href="/waiter">
+            <div className="text-3xl font-medium border-b-2 border-black pb-3">
+              {"<-"} Regresar
+            </div>
+          </a>
+
           <div className="mt-4">
             <h3 className="text-xl font-medium">Carrito</h3>
             <p>
@@ -16,10 +19,19 @@ export default function Waiter() {
             </p>
           </div>
           <div className="mt-4 space-y-3 overflow-y-auto max-h-[450px]">
-            <ProductSummary />
-            <ProductSummary />
-            <ProductSummary />
-            <ProductSummary />
+            <ProductSummary
+              product={{
+                quantity: 3,
+                id: "",
+                name: "Tacos",
+                unitPrice: 123,
+                category: {
+                  id: "",
+                  name: "",
+                },
+                img: "https://th.bing.com/th/id/OIP.08yOCZ3d7gE6DWBAoqLLsQHaJO?rs=1&pid=ImgDetMain",
+              }}
+            />
           </div>
         </div>
       </div>

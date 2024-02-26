@@ -17,12 +17,15 @@ function KioskoNavbar({ inputValue, onInputChange }: KioskoNavbarProps) {
         <div className="mx-auto px-10 flex items-center justify-between h-16">
           <div>
             {/* Left side content of the navbar */}
-            <Image
-              src="/t_de_taco_horizontal.png"
-              alt="logo"
-              width={80}
-              height={80}
-            />
+            <a href="/waiter">
+              <Image
+                src="/t_de_taco_horizontal.png"
+                alt="logo"
+                width={80}
+                height={80}
+              />
+            </a>
+
             {/* Add empty div to push the icon to the right */}
           </div>
           <div className="flex items-center">
