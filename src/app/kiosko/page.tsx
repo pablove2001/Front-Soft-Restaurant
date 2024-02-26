@@ -8,9 +8,8 @@ import { fetchKioskoProducts } from "@/lib/kioskoData";
 import { Product } from "@/types/Product";
 import Navbar from "@/components/KioskoNavbar";
 import Pay from "@/components/Pay";
+import ChatboxButton from "@/components/ChatboxButton";
 import Modal from "@/components/Modal";
-import Icon from "@mdi/react";
-import { mdiMinus, mdiPlus } from "@mdi/js";
 import ProductSummary from "@/components/ProductSummary";
 
 export default function Kiosko() {
@@ -68,6 +67,14 @@ export default function Kiosko() {
     setModalPay(false);
   };
 
+  const openChatbox = () => {
+    //setChatbox(true);
+  };
+
+  const closeChatbox = () => {
+    //setChatbox(false);
+  };
+
   const totalAmount = addedProducts.reduce(
     (total, product) => total + product.quantity * product.unitPrice,
     0
@@ -95,13 +102,14 @@ export default function Kiosko() {
         disabled={totalAmount === 0}
         onClick={openModalPay}
       />
+      <ChatboxButton onClick={openChatbox} />
       {modalPay && (
         <Modal onClose={closeModalPay}>
           <div className="grid grid-cols-2 gap-5 p-8 max-w-[1100px] mx-auto">
             <div className="flex items-center">
               <div>
                 <div
-                  className="text-3xl font-medium border-b-2 border-black pb-3 hover:cursor-pointer"
+                  className="text-3xl fon t-medium border-b-2 border-black pb-3 hover:cursor-pointer"
                   onClick={closeModalPay}
                 >
                   {"<-"} Regresar
