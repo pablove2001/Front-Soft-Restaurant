@@ -40,13 +40,12 @@ export default function LoginPage() {
                   placeholder="Constraseña"
                   className="mt-4 block w-full rounded-3xl p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
                 />
-                <button
-                  type="submit"
-                  className="mt-10 flex w-full justify-center rounded-3xl bg-black px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
+              </form>
+              <a href="../waiter">
+                <button className="mt-10 flex w-full justify-center rounded-3xl bg-black px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
                   Iniciar sesión
                 </button>
-              </form>
+              </a>
             </div>
           </div>
         </div>

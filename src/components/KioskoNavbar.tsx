@@ -47,7 +47,6 @@ function KioskoNavbar({ inputValue, onInputChange }: KioskoNavbarProps) {
           <div className="flex items-center">
             {" "}
             {/* Right side content of the navbar */}
-            <Icon path={mdiCart} size={1.5} color="white" />
           </div>
         </div>
       </nav>

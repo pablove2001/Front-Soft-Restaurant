@@ -8,7 +8,7 @@ import { fetchKioskoProducts } from "@/lib/kioskoData";
 import { Product } from "@/types/Product";
 import Navbar from "@/components/KioskoNavbar";
 import Pay from "@/components/Pay";
-import ChatboxButton from "@/components/ChatboxButton";
+import ChatboxButton from "@/components/Chatbox";
 import Modal from "@/components/Modal";
 import ProductSummary from "@/components/ProductSummary";
 
@@ -102,7 +102,7 @@ export default function Kiosko() {
         disabled={totalAmount === 0}
         onClick={openModalPay}
       />
-      <ChatboxButton onClick={openChatbox} />
+      <ChatboxButton />
       {modalPay && (
         <Modal onClose={closeModalPay}>
           <div className="grid grid-cols-2 gap-5 p-8 max-w-[1100px] mx-auto">

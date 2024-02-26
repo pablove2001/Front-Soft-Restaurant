@@ -48,17 +48,24 @@ function ModalWaiter({
         {/*Botones foot*/}
         <div className="flex justify-center mt-4">
           {/*Añadir producto*/}
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">
-            <a href="/waiter/kiosko">Añadir producto</a>
-          </button>
+          <a href="/waiter/kiosko">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">
+              Añadir producto
+            </button>
+          </a>
+
           {/*Resumen*/}
-          <button className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4">
-            <a href="/waiter/summary">Resumen de la mesa {numeroMesa}</a>
-          </button>
+          <a href="/waiter/summary">
+            <button className="bg-orange-500 text-white px-4 py-2 rounded-lg mr-4">
+              Resumen de la {numeroMesa}
+            </button>
+          </a>
           {/*Cobrar*/}
-          <button className="bg-green-500 text-white px-4 py-2 rounded-lg ">
-            <a href="/waiter/pay">Cobrar $$$</a>
-          </button>
+          <a href="/waiter/pay">
+            <button className="bg-green-500 text-white px-4 py-2 rounded-lg ">
+              Cobrar $$$
+            </button>
+          </a>
         </div>
       </div>
     </div>
