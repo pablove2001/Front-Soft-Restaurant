@@ -6,9 +6,12 @@ export default function Waiter() {
     <div className="h-screen grid grid-cols-2 gap-5 p-8 max-w-[1100px] mx-auto">
       <div className="flex items-center">
         <div>
-          <div className="text-3xl font-medium border-b-2 border-black pb-3">
-            {"<-"} Regresar
-          </div>
+          <a href="/waiter">
+            <div className="text-3xl font-medium border-b-2 border-black pb-3">
+              {"<-"} Regresar
+            </div>
+          </a>
+
           <div className="mt-4">
             <h3 className="text-xl font-medium">Carrito</h3>
             <p>
