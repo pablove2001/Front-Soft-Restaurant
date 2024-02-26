@@ -13,10 +13,7 @@ const Pay = ({
   onClick: () => void;
 }) => {
   return (
-    <div
-      className="fixed bottom-2 left-0 w-full flex justify-center"
-      onClick={onClick}
-    >
+    <div className="fixed bottom-2 left-0 w-full flex justify-center">
       <button
         className={`py-4 px-8 rounded-lg shadow-lg ${
           disabled
@@ -24,6 +21,7 @@ const Pay = ({
             : "bg-green-500 hover:bg-green-600"
         } text-white`}
         disabled={disabled}
+        onClick={onClick}
       >
         <Icon path={mdiCart} size={1} className="inline-block mr-2" />
         Pay ${totalAmount.toFixed(2)}
