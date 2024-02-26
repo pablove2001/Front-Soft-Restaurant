@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Modal para añadir/editar empleado
 function EmployeeModal({
@@ -7,10 +7,23 @@ function EmployeeModal({
   onClose,
   onSave,
   employeeToEdit,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (employee: { name: string; id: string; role: string }) => void;
+  employeeToEdit?: { name: string; id: string; role: string };
 }) {
   const [name, setName] = useState(employeeToEdit ? employeeToEdit.name : "");
   const [id, setId] = useState(employeeToEdit ? employeeToEdit.id : "");
   const [role, setRole] = useState(employeeToEdit ? employeeToEdit.role : "");
+
+  useEffect(() => {
+    if (isOpen && employeeToEdit) {
+      setName(employeeToEdit.name);
+      setId(employeeToEdit.id);
+      setRole(employeeToEdit.role);
+    }
+  }, [isOpen, employeeToEdit]);
 
   const handleSave = () => {
     onSave({ name, id, role });
@@ -76,6 +89,12 @@ function EmployeeCard({
   role,
   onEdit,
   onDelete,
+}: {
+  name: string;
+  id: string;
+  role: string;
+  onEdit: () => void;
+  onDelete: () => void;
 }) {
   return (
     <div className="w-full rounded overflow-hidden shadow-lg m-4">
@@ -114,14 +133,19 @@ export default function EmployeePage() {
     { id: "002", name: "María López", role: "Cajero" },
     { id: "003", name: "Pedro Ramirez", role: "Cocinero" },
   ]);
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [employeeToEdit, setEmployeeToEdit] = useState(null);
+  const [employeeToEdit, setEmployeeToEdit] = useState<any>(null); // Change null to any
 
   const handleAddEmployee = ({
     name,
     id,
     role,
+  }: {
+    name: string;
+    id: string;
+    role: string;
   }) => {
     const newEmployee = { id, name, role };
     setEmployees([...employees, newEmployee]);
@@ -129,21 +153,26 @@ export default function EmployeePage() {
 
   const handleEditEmployee = ({
     name,
-    id,
     role,
+    id,
+  }: {
+    name: string;
+    role: string;
+    id: string;
   }) => {
-    const editedEmployees = employees.map((employee) =>
-      employee.id === id ? { ...employee, name, role } : employee
-    );
+    const editedEmployees = employees.map((employee) => {
+      if (employee.id === employeeToEdit.id) { // Corrected syntax here
+        return { ...employee, name, role, id };
+      } else {
+        return employee;
+      }
+    });
+
     setEmployees(editedEmployees);
-    // Actualiza el estado del empleado que se está editando
-    if (employeeToEdit && employeeToEdit.id === id) {
-      setEmployeeToEdit({ id, name, role });
-    }
-    setIsEditModalOpen(false); // Cierra el modal de edición después de guardar los cambios
+    setIsEditModalOpen(false);
   };
 
-  const handleDeleteEmployee = (id) => {
+  const handleDeleteEmployee = (id: string) => {
     const updatedEmployees = employees.filter((employee) => employee.id !== id);
     setEmployees(updatedEmployees);
   };
@@ -208,7 +237,7 @@ export default function EmployeePage() {
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         onSave={handleEditEmployee}
-        employeeToEdit={employeeToEdit}
+        employeeToEdit={employeeToEdit || { name: "", id: "", role: "" }}
       />
     </div>
   );
