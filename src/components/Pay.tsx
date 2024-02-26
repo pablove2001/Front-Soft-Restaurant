@@ -6,12 +6,17 @@ import { mdiCart } from "@mdi/js";
 const Pay = ({
   totalAmount,
   disabled,
+  onClick,
 }: {
   totalAmount: number;
   disabled: boolean;
+  onClick: () => void;
 }) => {
   return (
-    <div className="fixed bottom-0 left-0 w-full flex justify-center">
+    <div
+      className="fixed bottom-2 left-0 w-full flex justify-center"
+      onClick={onClick}
+    >
       <button
         className={`py-4 px-8 rounded-lg shadow-lg ${
           disabled
@@ -21,7 +26,7 @@ const Pay = ({
         disabled={disabled}
       >
         <Icon path={mdiCart} size={1} className="inline-block mr-2" />
-        Pay ${totalAmount}
+        Pay ${totalAmount.toFixed(2)}
       </button>
     </div>
   );

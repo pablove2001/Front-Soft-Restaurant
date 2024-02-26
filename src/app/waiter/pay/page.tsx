@@ -16,10 +16,19 @@ export default function Waiter() {
             </p>
           </div>
           <div className="mt-4 space-y-3 overflow-y-auto max-h-[450px]">
-            <ProductSummary />
-            <ProductSummary />
-            <ProductSummary />
-            <ProductSummary />
+            <ProductSummary
+              product={{
+                quantity: 3,
+                id: "",
+                name: "Tacos",
+                unitPrice: 123,
+                category: {
+                  id: "",
+                  name: "",
+                },
+                img: "https://th.bing.com/th/id/OIP.08yOCZ3d7gE6DWBAoqLLsQHaJO?rs=1&pid=ImgDetMain",
+              }}
+            />
           </div>
         </div>
       </div>

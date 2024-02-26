@@ -25,7 +25,7 @@ export default function ProductKiosko({
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
@@ -37,15 +37,16 @@ export default function ProductKiosko({
   return (
     <>
       <div className="w-auto h-80 rounded-xl overflow-hidden p-1 relative flex flex-col shadow-xl border-[1px] border-gray-300">
-        <img
-          src={product.image}
-          alt="Picture of the author"
-          className="w-full h-44 rounded-xl"
+        <div
+          className="h-44 bg-cover bg-center rounded-xl"
+          style={{
+            backgroundImage: `url(${product.img})`,
+          }}
         />
         <ul className="mx-2 mt-3 flex-grow">
           <li className="">{product.name}</li>
           <li className="text-2xl font-semibold">
-            {product.unitprice}
+            {product.unitPrice.toFixed(2)}
             <span className="text-sm text-gray-500">/c.u</span>
           </li>
         </ul>
@@ -58,15 +59,16 @@ export default function ProductKiosko({
       </div>
       {modalVisible && (
         <Modal onClose={closeModal}>
-          <img
-            src={product.image}
-            alt="Product Image"
-            className="w-120 rounded-xl"
+          <div
+            className="h-44 w-72 bg-cover bg-center rounded-xl mx-auto"
+            style={{
+              backgroundImage: `url(${product.img})`,
+            }}
           />
           <br />
           <div>
             <h2 className="text-3xl font-bold">{product.name}</h2>
-            <p>Price: {product.unitprice} /c.u</p>
+            <p>Price: {product.unitPrice.toFixed(2)}/c.u</p>
             <div style={{ display: "flex", alignItems: "center" }}>
               Add Product:
               <span onClick={decreaseQuantity} className="mx-2 cursor-pointer">
@@ -131,25 +133,3 @@ export default function ProductKiosko({
     </>
   );
 }
-
-/*
-function EditQuantityProduct() {
-  return (
-    <div className="absolute h-screen w-screen z-10 flex inset-0 items-center justify-center">
-      <div className=" z-20 h-auto w-96 bg-gray-200 p-4 text-center flex flex-col  rounded-lg overflow-hidden border-[1px] border-black">
-        <p>
-          Cambiar el status <br /> de la orden:
-        </p>
-        <div className="flex flex-row space-x-4 mt-5">
-          <div className="duration-150 bg-red-400 hover:bg-red-500 hover:cursor-pointer flex-grow p-2 rounded-lg border-[1px] border-black">
-            Cancelar
-          </div>
-          <div className="duration-150 bg-green-400 hover:bg-green-500 hover:cursor-pointer flex-grow p-2 rounded-lg border-[1px] border-black">
-            Aceptar
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-*/
